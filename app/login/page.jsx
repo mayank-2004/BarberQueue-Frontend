@@ -13,7 +13,7 @@ export default function Login() {
     e.preventDefault();
     console.log('Login attempt:', { email, password });
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('http://localhost:8000/api/v1/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export default function Login() {
       if (response.ok) {
         const data = await response.json();
         console.log('Login successful:', data);
-        router.push('/');
+        router.push('/home');
       } else {
         console.error('Login failed:', response.statusText);
       }
