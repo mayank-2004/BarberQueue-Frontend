@@ -26,17 +26,17 @@ export default function SignUp() {
         e.preventDefault();
         console.log('SignUp attempt:', { name, email, phone, password });
         try {
-            const response = await fetch("/api/signup", {
+            const response = await fetch("http://localhost:8000/api/v1/user/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ name, email, phone, password }),
+                body: JSON.stringify({ name, gender , role , email, phone, password  ,address , pin }),
             });
             if (response.ok) {
                 const data = await response.json();
                 console.log("sign up successful:", data);
-                router.push("/login");
+                router.push("/home");
             }
         } catch (error) {
             console.error("Sign up error:", error);
