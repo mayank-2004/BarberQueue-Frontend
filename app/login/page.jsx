@@ -22,8 +22,14 @@ export default function Login() {
       });
       if (response.ok) {
         const data = await response.json();
+
         console.log('Login successful:', data);
-        router.push('/home');
+        if(data.user.role === 'customer') {
+          router.push('/barber/requests');
+        } else {
+          router.push('/home');
+        }
+          
       } else {
         console.error('Login failed:', response.statusText);
       }
